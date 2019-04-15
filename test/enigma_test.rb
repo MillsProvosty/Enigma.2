@@ -67,4 +67,8 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @enigma.character_set
   end
 
+  def test_case_name
+
+  end
+
 end
