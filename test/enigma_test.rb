@@ -3,6 +3,7 @@ require 'minitest/pride'
 require 'pry'
 require './lib/shiftgenerator'
 require './lib/enigma'
+require './lib/encrypt'
 
 class EnigmaTest < Minitest::Test
   def setup
@@ -64,6 +65,33 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @enigma.character_set
   end
 
+  def test_split_characters_works_creates_array_of_split_characters
+    assert_equal ["m","i","l","l","s"], @enigma.split_characters("Mills")
+  end
+
+  def test_validate_characters_returns_true_or_false
+    assert_equal true, @enigma.validate_characters("Mills")
+    assert_equal false, @enigma.validate_characters("Mills!")
+  end
+
+  def test_it_returns_array_of_chars_and_index_numbers
+     skip
+     assert_equal [["m", 0], ["i", 1], ["l", 2], ["l", 3], ["s", 4]], @enigma.chars_and_index("Mills")
+  end
 
 
+  def test_entered_keys_and_offsets_can_create_shift
+    skip
+    expected = {:a=>38, :b=>93, :c=>53, :d=>95}
+    assert_equal expected, @enigma.enter_shift("38492", "0943")
+  end
+
+
+  def test_it_can_rotate_the_characters
+    assert_equal "swqty", @enigma.encrypt("05931","1025", "Mills")
+  end
+
+  def test_apply_shift_returns_correct_shift
+    
+  end
 end
