@@ -21,4 +21,8 @@ class DecryptTest < Minitest::Test
     assert_equal "0943", @decrypt.offset
     assert_equal "sqkzz", @decrypt.encryption
   end
+
+  def test_
+
+  end
 end

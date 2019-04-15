@@ -13,11 +13,6 @@ class Encrypt
     @entered_shift_hash = Hash.new(0)
   end
 
-  def split_characters(message)
-    split_message = message.downcase.split(//)
-    split_message
-  end
-
   def validate_characters(message)
     split_message = split_characters(message)
     split_message.all? do |char|
