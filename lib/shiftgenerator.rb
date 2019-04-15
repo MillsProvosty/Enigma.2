@@ -12,4 +12,14 @@ module ShiftGenerator
     square_the_date.slice!(7..10)
   end
 
+  def generate_offsets
+    offset = {}
+    offset_num = last_four_digits
+    offset[:a] = offset_num[0].to_i
+    offset[:b] = offset_num[1].to_i
+    offset[:c] = offset_num[2].to_i
+    offset[:d] = offset_num[3].to_i
+    offset
+  end
+
 end
