@@ -37,4 +37,11 @@ module ShiftGenerator
   end
 
 
+  def create_shifts
+    shifts_hash = key_generator.merge!(create_offsets) do |key, keys, offsets|
+      keys + offsets
+    end
+  end
+
+
 end
