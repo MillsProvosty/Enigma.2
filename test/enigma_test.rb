@@ -37,26 +37,15 @@ class EnigmaTest < Minitest::Test
 
 
   def test_it_can_generate_a_random_number
-    skip
-    assert_equal 9, @enigma.random_number.length
+    assert_equal String, @enigma.random_number.class
   end
 
   def test_key_generator_creates_keys
-    skip
-    expected = {:a=>18,
-                :b=>83,
-                :c=>35,
-                :d=>58}
-    assert_equal expected, @enigma.key_generator
+    assert_equal Hash, @enigma.key_generator.class
   end
 
   def test_create_shifts_returns_new_hash
-    skip
-    expected = {:a=>50,
-                :b=>55,
-                :c=>11,
-                :d=>53}
-    assert_equal expected, @enigma.create_shifts
+    assert_equal Hash, @enigma.create_shifts.class
   end
 
 
@@ -65,8 +54,12 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @enigma.character_set
   end
 
-  def test_case_name
+  def test_welcome_message
+    assert_equal "Welcome to Enigma!",  @enigma.welcome_message
+  end
 
+  def test_run_encrypt
+    assert_equal "Let's encrypt a message!", @enigma.run_encrypt
   end
 
 end

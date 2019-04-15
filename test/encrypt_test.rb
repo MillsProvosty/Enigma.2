@@ -33,7 +33,6 @@ class EncryptTest < Minitest::Test
   end
 
   def test_it_returns_array_of_chars_and_index_numbers
-     skip
      assert_equal [["m", 0], ["i", 1], ["l", 2], ["l", 3], ["s", 4]], @encrypt.chars_and_index("Mills")
   end
 
