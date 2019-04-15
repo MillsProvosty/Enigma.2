@@ -19,7 +19,7 @@ module Encrypt
     letter_and_index
   end
 
-  
+
   def enter_shift(key, offset)
     entered_shift_hash = {}
     entered_shift_hash[:a] = (key[-5..-4].to_i + offset[0].to_i)
@@ -29,6 +29,29 @@ module Encrypt
     entered_shift_hash
   end
 
+  def encrypt(key, offset, message)
+  split_message = spilt_characters(message)
+  split_message.each do |char|
+    if !validate_characters(char)
+      "Invalid Entry, please only use letters and spaces."
+    end
+  end
+  letter_and_index = chars_and_index(split_message)
+  letter_and_index.map do |char, index|
+
+end
+
+def apply_shift(char)
+  if char[1] % 4 == 0
+    apply_shift(char, :a)
+  elsif char[1] % 4 == 1
+    apply_shift(char, :b)
+  elsif char[1] % 4 == 2
+    apply_shift(char, :c)
+  elsif char[1] %4 == 3
+    apply_shift(char, :d)
+  end
+end
 
 
 end
