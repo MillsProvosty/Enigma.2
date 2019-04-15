@@ -68,7 +68,8 @@ def encrypt(key, offset, message)
   letter_and_index = chars_and_index(message)
     letter_and_index.each do |char|
       if !validate_characters(char[0])
-        "Invalid Entry, please only use letters and spaces."
+        p  "Invalid Entry, please try again."
+        break
       else
           encrypted_message << apply_shift(char)
       end
