@@ -35,4 +35,10 @@ class EnigmaTest < Minitest::Test
   end
 
 
+  def test_it_can_generate_a_random_number
+    assert_equal 9, @enigma.random_number.length
+  end
+
+
+
 end
