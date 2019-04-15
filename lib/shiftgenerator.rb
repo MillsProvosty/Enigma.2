@@ -47,8 +47,21 @@ module ShiftGenerator
    characters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
   end
 
-  def split_characters(encrypt)
-    split_message = message.downcase.split(//)
+  def split_characters(words)
+    split_message = words.downcase.split(//)
     split_message
+  end
+
+  def shift_alphabet(entered_char, shift)
+    encrypted_chars = []
+    character_set.each do |char|
+      if entered_char == char
+        index = character_set.find_index(char)
+          char_index_rot = character_set.rotate(index)
+        new_rotate = char_index_rot.rotate(shift)
+       encrypted_chars << new_rotate[0]
+      end
+    end
+    encrypted_chars
   end
 end
