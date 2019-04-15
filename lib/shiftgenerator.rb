@@ -26,4 +26,15 @@ module ShiftGenerator
     new_key = '0000' + rand(0..99999).to_s
   end
 
+  def key_generator
+    key_hash = {}
+    key = random_number
+    key_hash[:a] = key[-5..-4].to_i
+    key_hash[:b] = key[-4..-3].to_i
+    key_hash[:c] = key[-3..-2].to_i
+    key_hash[:d] = key[-2..-1].to_i
+    key_hash
+  end
+
+
 end
