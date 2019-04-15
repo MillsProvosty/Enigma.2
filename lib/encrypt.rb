@@ -58,9 +58,10 @@ def shift_alphabet(entered_char, shift)
   encrypted_chars = []
   character_set.each do |char|
     if entered_char == char
-      rotated = character_set.rotate(shift)
-     encrypted_chars << rotated[0]
-
+      index = character_set.find_index(char)
+        char_index_rot = character_set.rotate(index)
+      new_rotate = char_index_rot.rotate(shift)
+     encrypted_chars << new_rotate[0]
     end
   end
   encrypted_chars
