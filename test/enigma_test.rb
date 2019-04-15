@@ -3,6 +3,7 @@ require 'minitest/pride'
 require 'pry'
 require './lib/shiftgenerator'
 require './lib/enigma'
+require './lib/encrypt'
 
 class EnigmaTest < Minitest::Test
   def setup
@@ -63,6 +64,11 @@ class EnigmaTest < Minitest::Test
                 " "]
     assert_equal expected, @enigma.character_set
   end
+
+  def test_split_characters_works_creates_array_of_split_characters
+    assert_equal ["m","i","l","l","s"], @enigma.split_characters("Mills")
+  end
+
 
 
 
