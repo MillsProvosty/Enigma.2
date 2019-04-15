@@ -9,10 +9,17 @@ class EncryptTest < Minitest::Test
 
   def setup
     @encrypt = Encrypt.new("38492", "0943", "Hello")
+    @encrypt_1 = Encrypt.new("38492", "0943", "Jesus I hope this works")
   end
 
   def test_encrypt_exists
     assert_instance_of Encrypt, @encrypt
+  end
+
+  def test_encrypt_has_attributes
+    assert_equal "Hello", @encrypt.message
+    assert_equal "38492", @encrypt.key
+    assert_equal "0943", @encrypt.offset
   end
 
   def test_split_characters_works_creates_array_of_split_characters
@@ -40,11 +47,15 @@ class EncryptTest < Minitest::Test
   end
 
   def test_shift_alphabet_creates_new_alphabet
-    assert_equal ["j"], @encrypt.shift_alphabet("m", 9)
+    assert_equal ["v"], @encrypt.shift_alphabet("m", 9)
   end
 
   def test_it_can_rotate_the_characters
-    assert_equal "lm ol", @encrypt.encrypt("38492", "0943", "Hello")
+    assert_equal "sqkzz", @encrypt.encrypt("38492", "0943", "Hello")
+  end
+
+  def test_it_can_encrypt_long_sentence
+    assert_equal "uqrhclhns oskegwclvbbwr", @encrypt_1.encrypt("38492", "0943", "Jesus I hope this works")
   end
 
 end
