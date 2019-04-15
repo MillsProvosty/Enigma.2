@@ -22,4 +22,8 @@ class EnigmaTest < Minitest::Test
     assert_equal "17009115561", @enigma.square_the_date
   end
 
+  def test_it_returns_the_last_four_digits
+    assert_equal "5561", @enigma.last_four_digits
+  end
+
 end
