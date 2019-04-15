@@ -17,4 +17,9 @@ class EnigmaTest < Minitest::Test
     assert_equal "130419", @enigma.generate_todays_date
   end
 
+
+  def test_it_can_square_todays_date
+    assert_equal "17009115561", @enigma.square_the_date
+  end
+
 end
