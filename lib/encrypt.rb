@@ -30,15 +30,18 @@ module Encrypt
   end
 
   def encrypt(key, offset, message)
-  split_message = spilt_characters(message)
+  split_message = split_characters(message)
   split_message.each do |char|
     if !validate_characters(char)
       "Invalid Entry, please only use letters and spaces."
+    else
+      letter_and_index = chars_and_index(char)
+      letter_and_index.map do |char|
+        encrypted_message = apply_shift(char)
+      end
+      encrypted_message
     end
   end
-  letter_and_index = chars_and_index(split_message)
-  letter_and_index.map do |char, index|
-
 end
 
 def apply_shift(char)
