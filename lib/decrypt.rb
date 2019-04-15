@@ -4,28 +4,22 @@ class Decrypt
   include ShiftGenerator
   attr_reader :key,
               :offset,
-              :encryption
+              :encryption,
+              :entered_shift_hash
   def initialize(key, offset, encryption)
     @key = key
     @offset = offset
     @encryption = encryption
+    @entered_shift_hash = Hash.new(0)
   end
 
-
-    def validate_characters(message)
-      split_message = split_characters(message)
-      split_message.all? do |char|
-        character_set.include?(char)
-      end
+  def chars_and_index(encryption)
+    characters = encryption.chars
+    letter_and_index = characters.map.with_index do |char, index|
+      [char, index]
     end
-
-    def chars_and_index(message)
-      characters = message.downcase.chars
-      letter_and_index = characters.map.with_index do |char, index|
-        [char, index]
-      end
-      letter_and_index
-    end
+    letter_and_index
+  end
 
     def enter_shift(key, offset)
       @entered_shift_hash[:a] = (key[-5..-4].to_i + offset[0].to_i)
@@ -35,7 +29,7 @@ class Decrypt
       @entered_shift_hash
     end
 
-  def apply_shift(char_array)
+  def reverse_shift(char_array)
     char = char_array[0]
     if char_array[1] % 4 == 0
       shift_alphabet(char, @entered_shift_hash[:a])
@@ -50,10 +44,10 @@ class Decrypt
 
   def shift_alphabet(entered_char, shift)
     encrypted_chars = []
-    character_set.each do |char|
+    reverse_character_set.each do |char|
       if entered_char == char
-        index = character_set.find_index(char)
-          char_index_rot = character_set.rotate(index)
+        index = reverse_character_set.find_index(char)
+          char_index_rot = reverse_character_set.rotate(index)
         new_rotate = char_index_rot.rotate(shift)
        encrypted_chars << new_rotate[0]
       end
@@ -61,20 +55,17 @@ class Decrypt
     encrypted_chars
   end
 
-  def encrypt(key, offset, message)
+  def decrypt(key, offset, encryption)
     self.enter_shift(key, offset)
-    encrypted_message = []
-    letter_and_index = chars_and_index(message)
-      letter_and_index.each do |char|
-        if !validate_characters(char[0])
-          "Invalid Entry, please only use letters and spaces."
-        else
-            encrypted_message << apply_shift(char)
-        end
-      end
-      encrypted_message.flatten.join
+    decrypted_message = []
+    letter_and_index = chars_and_index(encryption)
+    letter_and_index.each do |char|
+      decrypted_message << reverse_shift(char)
     end
+    decrypted_message.flatten.join
+  end
 
-
-
+  def reverse_character_set
+    character_set.reverse
+  end
 end
