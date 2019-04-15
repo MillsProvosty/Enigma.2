@@ -87,7 +87,11 @@ class EnigmaTest < Minitest::Test
   end
 
 
+  def test_it_can_rotate_the_characters
+    assert_equal "swqty", @enigma.encrypt("05931","1025", "Mills")
+  end
 
-
-
+  def test_apply_shift_returns_correct_shift
+    
+  end
 end
