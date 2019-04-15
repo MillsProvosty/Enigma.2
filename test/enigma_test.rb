@@ -48,6 +48,14 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @enigma.key_generator
   end
 
+  def test_create_shifts_returns_new_hash
+    expected = {:a=>17,
+                :b=>31,
+                :c=>72,
+                :d=>61}
+    assert_equal expected, @enigma.create_shifts
+  end
+
 
 
 end
