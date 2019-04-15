@@ -26,4 +26,13 @@ class EnigmaTest < Minitest::Test
     assert_equal "5561", @enigma.last_four_digits
   end
 
+  def test_generate_offset_returns_hash
+    expected = {:a=>5,
+                :b=>5,
+                :c=>6,
+                :d=>1}
+    assert_equal expected, @enigma.generate_offsets
+  end
+
+
 end
