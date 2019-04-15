@@ -11,5 +11,13 @@ module Encrypt
     end
   end
 
-  
+  def chars_and_index(message)
+  characters = message.downcase.chars
+  letter_and_index = characters.map.with_index do |char, index|
+    [char, index]
+  end
+  letter_and_index
+end
+
+
 end
