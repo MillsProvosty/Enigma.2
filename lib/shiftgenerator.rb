@@ -22,4 +22,8 @@ module ShiftGenerator
     offset
   end
 
+  def random_number
+    new_key = '0000' + rand(0..99999).to_s
+  end
+
 end
