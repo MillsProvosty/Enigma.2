@@ -39,6 +39,15 @@ class EnigmaTest < Minitest::Test
     assert_equal 9, @enigma.random_number.length
   end
 
+  def test_key_generator_creates_keys
+    expected ={
+    :a => "77",
+    :b => "78",
+    :c => "89",
+    :d => "97"}
+    assert_equal expected, @enigma.key_generator
+  end
+
 
 
 end
