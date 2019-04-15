@@ -16,6 +16,12 @@ class EncryptTest < Minitest::Test
     assert_instance_of Encrypt, @encrypt
   end
 
+  def test_encrypt_has_attributes
+    assert_equal "Hello", @encrypt.message
+    assert_equal "38492", @encrypt.key
+    assert_equal "0943", @encrypt.offset
+  end
+
   def test_split_characters_works_creates_array_of_split_characters
 
     assert_equal ["m","i","l","l","s"], @encrypt.split_characters("Mills")
