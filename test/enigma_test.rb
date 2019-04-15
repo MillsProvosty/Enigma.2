@@ -69,6 +69,12 @@ class EnigmaTest < Minitest::Test
     assert_equal ["m","i","l","l","s"], @enigma.split_characters("Mills")
   end
 
+  def test_validate_characters_returns_true_or_false
+    assert_equal true, @enigma.validate_characters("Mills")
+    assert_equal false, @enigma.validate_characters("Mills!")
+  end
+
+
 
 
 
