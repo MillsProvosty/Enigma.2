@@ -22,7 +22,7 @@ class DecryptTest < Minitest::Test
     assert_equal "sqkzz", @decrypt.encryption
   end
 
-  def test_
-
+  def test_it_can_decrypt_message
+    assert_equal "hello", @decrypt.decrypt("38492", "0943", "sqkzz")
   end
 end
