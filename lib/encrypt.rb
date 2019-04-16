@@ -13,21 +13,8 @@ class Encrypt
     @entered_shift_hash = Hash.new(0)
   end
 
-  def validated_characters(message)
-    split_message = split_characters(message)
-    validated = split_message.map do |char|
-      char
-    end
-    validated
-  end
 
-  def chars_and_index(message)
-    characters = message.downcase.chars
-    letter_and_index = characters.map.with_index do |char, index|
-      [char, index]
-    end
-    letter_and_index
-  end
+
 
   def enter_shift(key, offset)
     @entered_shift_hash[:a] = (key[-5..-4].to_i + offset[0].to_i)

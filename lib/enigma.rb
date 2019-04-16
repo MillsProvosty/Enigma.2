@@ -7,8 +7,16 @@ include ShiftGenerator
     @entered_shift_hash = Hash.new(0)
   end
 
+  def chars_and_index(message)
+    characters = message.downcase.chars
+    letter_and_index = characters.map.with_index do |char, index|
+      [char, index]
+    end
+    letter_and_index
+  end
+
   def encrypt(key, date, message)
-    find_offset(date)
+    offset = find_offset(date)
     self.enter_shift(key, offset)
     encrypted_message = []
     letter_and_index = chars_and_index(message)

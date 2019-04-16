@@ -53,10 +53,18 @@ class EnigmaTest < Minitest::Test
     assert_equal Hash, @enigma.create_shifts.class
   end
 
-
   def test_character_set
     expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
     assert_equal expected, @enigma.character_set
+  end
+
+  def test_split_characters_creates_array
+
+    assert_equal ["m","i","l","l","s"], @enigma.split_characters("Mills")
+  end
+
+  def test_it_returns_array_of_chars_and_index_nums
+     assert_equal [["m", 0], ["i", 1], ["l", 2], ["l", 3], ["s", 4]], @enigma.chars_and_index("Mills")
   end
 
 
