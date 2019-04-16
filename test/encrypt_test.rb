@@ -12,13 +12,6 @@ class EncryptTest < Minitest::Test
 
 
 
-  def test_entered_keys_and_offsets_can_create_shift
-    expected = {:a=>38,
-                :b=>93,
-                :c=>53,
-                :d=>95}
-    assert_equal expected, @encrypt.enter_shift("38492", "0943")
-  end
 
   def test_shift_alphabet_creates_new_alphabet
     assert_equal ["v"], @encrypt.shift_alphabet("m", 9)

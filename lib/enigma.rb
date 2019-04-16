@@ -15,6 +15,14 @@ include ShiftGenerator
     letter_and_index
   end
 
+  def enter_shift(key, offset)
+    @entered_shift_hash[:a] = (key[-5..-4].to_i + offset[0].to_i)
+    @entered_shift_hash[:b] = (key[-4..-3].to_i + offset[1].to_i)
+    @entered_shift_hash[:c] = (key[-3..-2].to_i + offset[2].to_i)
+    @entered_shift_hash[:d] = (key[-2..-1].to_i + offset[3].to_i)
+    @entered_shift_hash
+  end
+
   def encrypt(key, date, message)
     offset = find_offset(date)
     self.enter_shift(key, offset)
