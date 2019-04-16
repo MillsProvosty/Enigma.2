@@ -18,8 +18,9 @@ include ShiftGenerator
       encrypted_message.flatten.join
   end
 
-  def find_offset
-
+  def find_offset(date)
+    squared = (date.to_i * date.to_i).to_s
+    squared.slice!(-4..-1)
   end
 
 end

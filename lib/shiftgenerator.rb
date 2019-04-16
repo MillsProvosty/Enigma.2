@@ -9,7 +9,7 @@ module ShiftGenerator
   end
 
   def last_four_digits
-    square_the_date.slice!(7..10)
+    square_the_date.slice!(-4..-1)
   end
 
   def generate_offsets

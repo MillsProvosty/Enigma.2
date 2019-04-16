@@ -36,6 +36,10 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @enigma.generate_offsets
   end
 
+  def test_find_offset_makes_offset_for_given_date
+    assert_equal "1025", @enigma.find_offset("040895")
+  end
+
 
   def test_it_can_generate_a_random_number
     assert_equal String, @enigma.random_number.class
