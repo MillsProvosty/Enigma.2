@@ -1,7 +1,6 @@
 module ShiftGenerator
 
   def generate_todays_date(*date)
-    if date
      Time.now.strftime("%d%m%y")
   end
 
@@ -39,13 +38,14 @@ module ShiftGenerator
 
 
   def create_shifts
-    shifts_hash = key_generator.merge!(generate_offsets) do |key, keys, offsets|
+
+  shifts_hash = key_generator.merge!(generate_offsets) do |key, keys, offsets|
       keys + offsets
     end
   end
 
   def character_set
-   characters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " ", "!", ".", "," , "'"]
+   characters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
   end
 
   def split_characters(words)

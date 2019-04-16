@@ -23,6 +23,6 @@ class DecryptTest < Minitest::Test
   end
 
   def test_it_can_decrypt_message
-    assert_equal "hello", @decrypt.decrypt("38492", "0943", "oecnv")
+    assert_equal "hello", @decrypt.decrypt("38492", "0943", "dtd k")
   end
 end

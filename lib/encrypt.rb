@@ -13,11 +13,12 @@ class Encrypt
     @entered_shift_hash = Hash.new(0)
   end
 
-  def validate_characters(message)
+  def validated_characters(message)
     split_message = split_characters(message)
-    split_message.all? do |char|
-      character_set.include?(char)
+    validated = split_message.map do |char|
+      char
     end
+    validated
   end
 
   def chars_and_index(message)
@@ -44,7 +45,7 @@ def apply_shift(char_array)
     shift_alphabet(char, @entered_shift_hash[:b])
   elsif char_array[1] % 4 == 2
     shift_alphabet(char, @entered_shift_hash[:c])
-  elsif char_array[1] %4 == 3
+  elsif char_array[1] % 4 == 3
     shift_alphabet(char, @entered_shift_hash[:d])
   end
 end
@@ -67,14 +68,11 @@ def encrypt(key, offset, message)
   encrypted_message = []
   letter_and_index = chars_and_index(message)
     letter_and_index.each do |char|
-      if !validate_characters(char[0])
-        p  "Invalid Entry, please try again."
-        break
-      else
-          encrypted_message << apply_shift(char)
-      end
+        encrypted_message << apply_shift(char)
     end
     encrypted_message.flatten.join
   end
+
+
 
 end

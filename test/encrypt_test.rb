@@ -27,9 +27,9 @@ class EncryptTest < Minitest::Test
     assert_equal ["m","i","l","l","s"], @encrypt.split_characters("Mills")
   end
 
-  def test_validate_characters_returns_true_or_false
-    assert_equal true, @encrypt.validate_characters("Mills!")
-    assert_equal false, @encrypt.validate_characters("M%i(l@ls!")
+  def test_validated_characters_returns_correct_characters
+    assert_equal ["m", "i", "l", "l", "s", "!"], @encrypt.validated_characters("Mills!")
+    assert_equal ["m", "%", "i", "(", "l", "@", "l", "s", "!"], @encrypt.validated_characters("M%i(l@ls!")
   end
 
   def test_it_returns_array_of_chars_and_index_numbers
@@ -50,11 +50,11 @@ class EncryptTest < Minitest::Test
   end
 
   def test_it_can_rotate_the_characters
-    assert_equal "oecnv", @encrypt.encrypt("38492", "0943", "Hello")
+    assert_equal "sqkzz", @encrypt.encrypt("38492", "0943", "Hello!")
   end
 
   def test_it_can_encrypt_long_sentence
-    assert_equal "qejwz,rkchfrl kjpsryvrbud!s", @encrypt_1.encrypt("38492", "0943", "Jesus, I hope this works!!!")
+    assert_equal "sqkzzlvbbxc", @encrypt_1.encrypt("02715", "0943", "Hello world")
   end
 
 end
