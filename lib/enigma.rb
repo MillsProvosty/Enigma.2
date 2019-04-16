@@ -2,7 +2,7 @@ require_relative './shiftgenerator'
 require_relative './encrypt'
 
 class Enigma
-include ShiftGenerator 
+include ShiftGenerator
   def initialize
 
   end
@@ -11,7 +11,5 @@ include ShiftGenerator
     system "clear"
     p "Welcome to Enigma!"
   end
-
-
 
 end
