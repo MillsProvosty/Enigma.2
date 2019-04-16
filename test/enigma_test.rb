@@ -56,7 +56,6 @@ class EnigmaTest < Minitest::Test
 
 
   def test_split_characters_creates_array
-
     assert_equal ["m","i","l","l","s"], @enigma.split_characters("Mills")
   end
 
