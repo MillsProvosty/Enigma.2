@@ -58,8 +58,4 @@ class EnigmaTest < Minitest::Test
     assert_equal "Welcome to Enigma!",  @enigma.welcome_message
   end
 
-  def test_run_encrypt
-    assert_equal "Let's encrypt a message!", @enigma.run_encrypt
-  end
-
 end
