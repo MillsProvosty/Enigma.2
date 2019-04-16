@@ -41,8 +41,7 @@ include ShiftGenerator
     new_aplha.first
   end
 
-
-  def encrypt(key, date, message)
+  def code(message, key, date)
     offset = find_offset(date)
     self.enter_shift(key, offset)
     encrypted_message = []
@@ -52,6 +51,14 @@ include ShiftGenerator
       end
       encrypted_message.flatten.join
   end
+
+  def encrypt(message, key = self.key_generator, date = self.generate_todays_date)
+    {encryption: code(message, key, date),
+    key: key,
+    date: date}
+  end
+
+  
 
   def find_offset(date)
     squared = (date.to_i * date.to_i).to_s

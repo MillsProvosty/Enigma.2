@@ -76,6 +76,19 @@ class EnigmaTest < Minitest::Test
     assert_equal "v", @enigma.shift_alphabet("m", 9)
   end
 
+  def test_it_can_code_the_info
+    assert_equal "keder ohulw", @enigma.code("hello world", "02715", "040895")
+  end
+
+  def test_it_can_encrypt
+    expected = {
+    encryption: "keder ohulw",
+    key: "02715",
+    date: "040895"
+   }
+    assert_equal expected, @enigma.encrypt("hello world", "02715", "040895")
+  end
+
 
 
 

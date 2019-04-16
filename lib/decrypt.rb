@@ -6,9 +6,9 @@ class Decrypt
               :offset,
               :encryption,
               :entered_shift_hash
-  def initialize(key, offset, encryption)
+  def initialize(key, date, encryption)
     @key = key
-    @offset = offset
+    @date = date
     @encryption = encryption
     @entered_shift_hash = Hash.new(0)
   end
