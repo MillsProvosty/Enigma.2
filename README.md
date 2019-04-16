@@ -67,7 +67,15 @@ pry(main)> enigma.encrypt("hello world")
 Command Line Interface
 Add a command line interface for encryption and decryption. You should create a Runner file called encrypt.rb that takes two command line arguments. The first is an existing file that contains a message to encrypt. The second is a file where your program should write the encrypted message. In addition to writing the encrypted message to the file, your program should output to the screen the file it wrote to, the key and the date.
 
-Additionally, you should create a Runner file called decrypt.rb that takes four command line arguments. The first is an existing file that contains an encrypted message. The second is a file where your program should write the decrypted message. The third is the key to be used for decryption. The fourth is the date to be used for decryption. In addition to writing the decrypted message to the file, your program should output to the screen the file it wrote to, the key used for decryption, and the date used for decryption.
+Additionally, you should create a Runner file called decrypt.rb that takes four command line arguments.
+
+ The first is an existing file that contains an encrypted message.
+
+ The second is a file where your program should write the decrypted message.
+
+ The third is the key to be used for decryption.
+
+ The fourth is the date to be used for decryption. In addition to writing the decrypted message to the file, your program should output to the screen the file it wrote to, the key used for decryption, and the date used for decryption.
 
 You should be able to use your CLI like this:
 

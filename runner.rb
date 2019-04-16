@@ -1,5 +1,4 @@
 require_relative './lib/enigma'
 
-enigma = Enigma.new
-
-require 'pry'; binding.pry
+@enigma = Enigma.new
+@enigma.run_encrypt

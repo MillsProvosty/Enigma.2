@@ -1,6 +1,6 @@
+require_relative './test_helper'
 require 'minitest/autorun'
 require 'minitest/pride'
-require 'pry'
 require './lib/shiftgenerator'
 require './lib/enigma'
 require './lib/encrypt'
@@ -9,7 +9,7 @@ require './lib/decrypt'
 
 class DecryptTest < Minitest::Test
   def setup
-    @decrypt = Decrypt.new("38492", "0943", "sqkzz")
+    @decrypt = Decrypt.new("38492", "0943", "oecnv")
   end
 
   def test_decrypt_exists
@@ -19,10 +19,10 @@ class DecryptTest < Minitest::Test
   def test_it_has_attributes
     assert_equal "38492", @decrypt.key
     assert_equal "0943", @decrypt.offset
-    assert_equal "sqkzz", @decrypt.encryption
+    assert_equal "oecnv", @decrypt.encryption
   end
 
   def test_it_can_decrypt_message
-    assert_equal "hello", @decrypt.decrypt("38492", "0943", "sqkzz")
+    assert_equal "hello", @decrypt.decrypt("38492", "0943", "dtd k")
   end
 end
