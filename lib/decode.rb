@@ -1,4 +1,4 @@
-module Decrypt
+module Decode
 
   def shift_reversed_alphabet(entered_char, shift)
     encrypted_chars = []
@@ -32,7 +32,7 @@ module Decrypt
       decrypted_message.flatten.join
   end
 
-  def decrypt(encryption, key = self.key_generator, date = self.generate_todays_date)
+  def decrypt(encryption, key = self.random_number, date = self.generate_todays_date)
     {decryption: decode(encryption, key, date),
     key: key,
     date: date}

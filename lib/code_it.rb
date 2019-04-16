@@ -52,7 +52,7 @@ module CodeIt
       encrypted_message.flatten.join
   end
 
-  def encrypt(message, key = self.key_generator, date = self.generate_todays_date)
+  def encrypt(message, key = self.random_number, date = self.generate_todays_date)
     {encryption: code(message, key, date),
     key: key,
     date: date}
