@@ -24,6 +24,7 @@ module ShiftGenerator
 
   def random_number
     new_key = '0000' + rand(0..99999).to_s
+    new_key[-5..-1]
   end
 
   def key_generator

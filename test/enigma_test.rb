@@ -1,10 +1,12 @@
+
+
 require_relative './test_helper'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/shiftgenerator'
 require './lib/enigma'
 require './lib/code_it'
-require './lib/decrypt'
+require './lib/decode'
 require 'date'
 
 class EnigmaTest < Minitest::Test
@@ -125,5 +127,7 @@ class EnigmaTest < Minitest::Test
 
    encrypted = @enigma.encrypt("hello world", "02715")
     assert_equal expected, @enigma.decrypt(encrypted[:encryption], "02715")
+
+
   end
 end
