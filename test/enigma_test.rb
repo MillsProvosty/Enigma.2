@@ -68,13 +68,15 @@ class EnigmaTest < Minitest::Test
   end
 
 
-    def test_entered_keys_and_offsets_can_create_shift
-      expected = {:a=>38,
-                  :b=>93,
-                  :c=>53,
-                  :d=>95}
-      assert_equal expected, @enigma.enter_shift("38492", "0943")
-    end
+  def test_entered_keys_and_offsets_can_create_shift
+    expected = {:a=>38,
+                :b=>93,
+                :c=>53,
+                :d=>95}
+    assert_equal expected, @enigma.enter_shift("38492", "0943")
+  end
+
+
 
 
 end

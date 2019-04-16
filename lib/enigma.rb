@@ -23,6 +23,15 @@ include ShiftGenerator
     @entered_shift_hash
   end
 
+  def apply_shift(char_array)
+    char = char_array[0]
+    if char_array[1] % 4 == 0 ; shift_alphabet(char, @entered_shift_hash[:a])
+    elsif char_array[1] % 4 == 1 ; shift_alphabet(char, @entered_shift_hash[:b])
+    elsif char_array[1] % 4 == 2 ; shift_alphabet(char, @entered_shift_hash[:c])
+    elsif char_array[1] % 4 == 3 ; shift_alphabet(char, @entered_shift_hash[:d])
+    end
+  end
+
   def encrypt(key, date, message)
     offset = find_offset(date)
     self.enter_shift(key, offset)
