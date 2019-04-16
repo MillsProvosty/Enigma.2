@@ -1,5 +1,3 @@
-
-
 require_relative './test_helper'
 require 'minitest/autorun'
 require 'minitest/pride'
@@ -7,7 +5,7 @@ require './lib/shiftgenerator'
 require './lib/enigma'
 require './lib/code_it'
 require './lib/decode'
-require 'date'
+
 
 class EnigmaTest < Minitest::Test
   def setup
