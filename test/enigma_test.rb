@@ -88,21 +88,42 @@ class EnigmaTest < Minitest::Test
     date: "040895"
    }
     assert_equal expected, @enigma.encrypt("hello world", "02715", "040895")
+
+    expected = {
+    encryption: "zhtm?!s*$@&",
+    key: "02715",
+    date: "040895"
+   }
+    assert_equal expected, @enigma.encrypt("What?! *$@&", "02715", "040895")
+
+    expected = {:encryption=>"ojhavesdyq ",
+                :key=>"02715",
+                :date=>"160419"}
+    assert_equal expected, @enigma.encrypt("hello world", "02715")
   end
 
   def test_it_can_decrypt
     expected = {
-    message: "hello world",
+    decryption: "hello world",
     key: "02715",
     date: "040895"
    }
     assert_equal expected, @enigma.decrypt("keder ohulw", "02715", "040895")
+
+    expected = {
+    decryption: "hello world!!",
+    key: "02715",
+    date: "040895"
+   }
+    assert_equal expected, @enigma.decrypt("keder ohulw!!", "02715", "040895")
+
+    expected = {
+    decryption: "hello world",
+    key: "02715",
+    date: "160419"
+   }
+
+   encrypted = @enigma.encrypt("hello world", "02715")
+    assert_equal expected, @enigma.decrypt(encrypted[:encryption], "02715")
   end
-
-
-
-
-
-
-
 end

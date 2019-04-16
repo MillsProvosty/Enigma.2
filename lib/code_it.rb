@@ -32,9 +32,13 @@ module CodeIt
 
   def shift_alphabet(entered_char, shift)
     encrypted_chars = []
-    @character_set.rotate! until @character_set.first == entered_char
-    new_aplha = @character_set.rotate(shift)
-    new_aplha.first
+    if @character_set.include?(entered_char)
+      @character_set.rotate! until @character_set.first == entered_char
+      new_aplha = @character_set.rotate(shift)
+      new_aplha.first
+    else
+      entered_char
+    end
   end
 
   def code(message, key, date)
