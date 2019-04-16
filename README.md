@@ -1,4 +1,4 @@
-Self Assessment:
+Self Assessment for Enigma Project:
 
 Functionality: 3
 Enigma Class with encrypt and decrypt methods successfully implemented. Encrypt/decrypt command line interfaces successfully implemented.
