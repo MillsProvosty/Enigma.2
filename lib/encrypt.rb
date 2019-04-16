@@ -77,29 +77,4 @@ def encrypt(key, offset, message)
     encrypted_message.flatten.join
   end
 
-  def run_encrypt
-      p "Let's encrypt a message!n\ Enter your message below:"
-      self.message = gets.chomp
-        system "clear"
-      p "Next, you can enter a date, or type 'today' to have today's date entered: "
-      gets.chomp = date
-        if date == 'today'
-          self.generate_todays_date
-        else
-          self.offset = date
-        end
-        system "clear"
-      p "Finally, lets enter a random five digit number to use as our key, or type 'random' to generate a random key."
-      gets_chomp = key
-        if key == "random"
-          self.key_generator
-        else
-          self.key == key
-        end
-        system "clear"
-      p "Ok! Lets encrypt!"
-      sleep(3.0)
-      p "#{self.encrypt(key, date, message)}"
-  end
-
 end
