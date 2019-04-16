@@ -1,71 +1,43 @@
-require_relative './shiftgenerator'
+module Decrypt
 
-class Decrypt
-  include ShiftGenerator
-  attr_reader :key,
-              :offset,
-              :encryption,
-              :entered_shift_hash
-  def initialize(key, date, encryption)
-    @key = key
-    @date = date
-    @encryption = encryption
-    @entered_shift_hash = Hash.new(0)
-  end
-
-  def chars_and_index(encryption)
-    characters = encryption.chars
-    letter_and_index = characters.map.with_index do |char, index|
-      [char, index]
-    end
-    letter_and_index
-  end
-
-    def enter_shift(key, offset)
-      @entered_shift_hash[:a] = (key[-5..-4].to_i + offset[0].to_i)
-      @entered_shift_hash[:b] = (key[-4..-3].to_i + offset[1].to_i)
-      @entered_shift_hash[:c] = (key[-3..-2].to_i + offset[2].to_i)
-      @entered_shift_hash[:d] = (key[-2..-1].to_i + offset[3].to_i)
-      @entered_shift_hash
-    end
-
-  def reverse_shift(char_array)
-    char = char_array[0]
-    if char_array[1] % 4 == 0
-      shift_alphabet(char, @entered_shift_hash[:a])
-    elsif char_array[1] % 4 == 1
-      shift_alphabet(char, @entered_shift_hash[:b])
-    elsif char_array[1] % 4 == 2
-      shift_alphabet(char, @entered_shift_hash[:c])
-    elsif char_array[1] %4 == 3
-      shift_alphabet(char, @entered_shift_hash[:d])
-    end
-  end
-
-  def shift_alphabet(entered_char, shift)
+  def shift_reversed_alphabet(entered_char, shift)
     encrypted_chars = []
-    reverse_character_set.each do |char|
-      if entered_char == char
-        index = reverse_character_set.find_index(char)
-          char_index_rot = reverse_character_set.rotate(index)
-        new_rotate = char_index_rot.rotate(shift)
-       encrypted_chars << new_rotate[0]
-      end
-    end
-    encrypted_chars
+    reversed = @character_set.reverse
+    reversed.rotate! until reversed.first == entered_char
+    new_aplha = reversed.rotate(shift)
+    new_aplha.first
   end
 
-  def decrypt(key, offset, encryption)
+  def apply_decode_shift(char_array)
+    #binding.pry
+    char = char_array[0]
+    if char_array[1] % 4 == 0 ; shift_reversed_alphabet(char, @entered_shift_hash[:a])
+    elsif char_array[1] % 4 == 1 ; shift_reversed_alphabet(char, @entered_shift_hash[:b])
+    elsif char_array[1] % 4 == 2 ; shift_reversed_alphabet(char, @entered_shift_hash[:c])
+    elsif char_array[1] % 4 == 3 ; shift_reversed_alphabet(char, @entered_shift_hash[:d])
+    end
+    #binding.pry
+  end
+
+  def decode(message, key, date)
+    #binding.pry
+    offset = find_offset(date)
     self.enter_shift(key, offset)
     decrypted_message = []
-    letter_and_index = chars_and_index(encryption)
-    letter_and_index.each do |char|
-      decrypted_message << reverse_shift(char)
-    end
-    decrypted_message.flatten.join
+    letter_and_index = chars_and_index(message)
+      letter_and_index.each do |char|
+          decrypted_message << apply_decode_shift(char)
+      end
+      decrypted_message.flatten.join
+      #binding.pry
   end
 
-  def reverse_character_set
-    character_set.reverse
+  def decrypt(encryption, key = self.key_generator, date = self.generate_todays_date)
+    #binding.pry
+    {message: decode(encryption, key, date),
+    key: key,
+    date: date}
   end
+
+
 end

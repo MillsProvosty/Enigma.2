@@ -1,4 +1,3 @@
-
 module CodeIt
 
   def find_offset(date)
@@ -30,7 +29,6 @@ module CodeIt
     elsif char_array[1] % 4 == 3 ; shift_alphabet(char, @entered_shift_hash[:d])
     end
   end
-
 
   def shift_alphabet(entered_char, shift)
     encrypted_chars = []
