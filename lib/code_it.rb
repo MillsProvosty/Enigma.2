@@ -34,16 +34,14 @@ module CodeIt
     encrypted_chars = []
     if @character_set.include?(entered_char)
       @character_set.rotate! until @character_set.first == entered_char
-      new_aplha = @character_set.rotate(shift)
-      new_aplha.first
+    @character_set.rotate(shift).first
     else
       entered_char
     end
   end
 
   def code(message, key, date)
-    offset = find_offset(date)
-    self.enter_shift(key, offset)
+    offset = find_offset(date);self.enter_shift(key, offset)
     encrypted_message = []
     letter_and_index = chars_and_index(message)
       letter_and_index.each do |char|

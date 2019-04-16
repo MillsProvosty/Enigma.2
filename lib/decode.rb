@@ -5,8 +5,7 @@ module Decode
     reversed = @character_set.reverse
     if reversed.include?(entered_char)
       reversed.rotate! until reversed.first == entered_char
-      new_aplha = reversed.rotate(shift)
-      new_aplha.first
+      reversed.rotate(shift).first
     else
       entered_char
     end
@@ -22,8 +21,7 @@ module Decode
   end
 
   def decode(message, key, date)
-    offset = find_offset(date)
-    self.enter_shift(key, offset)
+    offset = find_offset(date);self.enter_shift(key, offset)
     decrypted_message = []
     letter_and_index = chars_and_index(message)
       letter_and_index.each do |char|
