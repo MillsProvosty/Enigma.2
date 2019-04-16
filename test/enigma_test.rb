@@ -3,7 +3,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/shiftgenerator'
 require './lib/enigma'
-require './lib/encrypt'
+require './lib/code_it'
 require 'date'
 
 class EnigmaTest < Minitest::Test

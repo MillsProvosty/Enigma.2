@@ -15,19 +15,4 @@ class Encrypt
 
 
 
-
-
-
-def encrypt(key, offset, message)
-  self.enter_shift(key, offset)
-  encrypted_message = []
-  letter_and_index = chars_and_index(message)
-    letter_and_index.each do |char|
-        encrypted_message << apply_shift(char)
-    end
-    encrypted_message.flatten.join
-  end
-
-
-
 end
