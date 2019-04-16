@@ -43,9 +43,9 @@ module ShiftGenerator
     end
   end
 
-  def character_set
-   ("a".."z").to_a << " "
-  end
+  # def character_set
+  #  ("a".."z").to_a << " "
+  # end
 
   def split_characters(words)
     split_message = words.downcase.split(//)

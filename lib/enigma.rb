@@ -5,6 +5,7 @@ class Enigma
 include ShiftGenerator
   def initialize
     @entered_shift_hash = Hash.new(0)
+    @character_set = ("a".."z").to_a << " "
   end
 
   def chars_and_index(message)
@@ -31,6 +32,15 @@ include ShiftGenerator
     elsif char_array[1] % 4 == 3 ; shift_alphabet(char, @entered_shift_hash[:d])
     end
   end
+
+
+  def shift_alphabet(entered_char, shift)
+    encrypted_chars = []
+    @character_set.rotate! until @character_set.first == entered_char
+    new_aplha = @character_set.rotate(shift)
+    new_aplha.first
+  end
+
 
   def encrypt(key, date, message)
     offset = find_offset(date)

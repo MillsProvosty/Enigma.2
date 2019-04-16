@@ -53,10 +53,6 @@ class EnigmaTest < Minitest::Test
     assert_equal Hash, @enigma.create_shifts.class
   end
 
-  def test_character_set
-    expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
-    assert_equal expected, @enigma.character_set
-  end
 
   def test_split_characters_creates_array
 
@@ -74,6 +70,10 @@ class EnigmaTest < Minitest::Test
                 :c=>53,
                 :d=>95}
     assert_equal expected, @enigma.enter_shift("38492", "0943")
+  end
+
+  def test_shift_alphabet_shifts_letters
+    assert_equal "v", @enigma.shift_alphabet("m", 9)
   end
 
 
